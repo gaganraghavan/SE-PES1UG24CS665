@@ -36,3 +36,19 @@ def test_claim_payout():
     assert claim_payout(10, 100, 10, False) == 0
     assert claim_payout(70, 100, 10, False) == 60
     assert claim_payout(200, 100, 10, False) == 100
+
+def test_annual_premium_boundary_cases():
+    assert annual_premium("sedan", 25, 2, False) == 12000
+    assert annual_premium("hatchback", 59, 1, True) == 7500
+    assert annual_premium("suv", 24, 2, True) == 18500
+
+
+def test_no_claim_bonus_boundary_cases():
+    assert no_claim_bonus(2) == 20
+    assert no_claim_bonus(4) == 35
+
+
+def test_claim_payout_boundary_cases():
+    assert claim_payout(11, 100, 10, False) == 1
+    assert claim_payout(10, 100, 11, False) == 0
+    assert claim_payout(150, 100, 50, False) == 100
